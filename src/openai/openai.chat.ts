@@ -2,9 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { systemPrompt } from './system-prompt';
 import { functionDeclarations } from './function-declarations';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-
-export function initiateChat(userContext: any) {
+export function initiateChat(genAI: GoogleGenerativeAI, userContext: any) {
   const formattedHistory = userContext
     .filter((msg) => msg.content?.trim())
     .map((msg) => ({

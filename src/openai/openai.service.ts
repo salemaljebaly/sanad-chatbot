@@ -3,9 +3,11 @@ import { UserContextService } from 'src/user-context/user-context.service';
 import { AmadeusService } from 'src/amadeus/amadeus.service';
 import { processFunctionCall } from './openai.function-calls';
 import { initiateChat } from './openai.chat';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 @Injectable()
 export class OpenaiService {
+  private readonly genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   private readonly logger = new Logger(OpenaiService.name);
 
   constructor(
@@ -25,7 +27,7 @@ export class OpenaiService {
         'user',
         userID,
       );
-      const chat = initiateChat(userContext);
+      const chat = initiateChat(this.genAI, userContext);
 
       const result = await chat.sendMessage(userInput);
       const response = result.response;
