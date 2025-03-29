@@ -14,6 +14,7 @@ export class PaymentModule {
       module: PaymentModule,
       controllers: [PaymentController],
       imports: [ConfigModule.forRoot()],
+      exports: [PaymentService],
       providers: [
         PaymentService,
         {
