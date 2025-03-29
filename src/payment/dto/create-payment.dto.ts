@@ -23,4 +23,7 @@ export class CreateCheckoutSessionDto {
 
   @IsString()
   currency: string;
+
+  @IsString()
+  serviceType: string;
 }
