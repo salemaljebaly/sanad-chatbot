@@ -48,5 +48,37 @@ export const functionDeclarations: FunctionDeclaration[] = [
       ],
     },
   },
+  {
+    name: 'createCheckoutSession',
+    description: 'Generate a Stripe payment link for various services',
+    parameters: {
+      type: SchemaType.OBJECT,
+      properties: {
+        serviceType: {
+          type: SchemaType.STRING,
+          description:
+            'Type of service for payment link, e.g., flight, hotel, eSIM',
+        },
+        description: {
+          type: SchemaType.STRING,
+          description:
+            'Description of the service, e.g., flight from SYD to BKK',
+        },
+        amount: {
+          type: SchemaType.NUMBER,
+          description: 'Amount to be charged for the service in cents',
+        },
+        currency: {
+          type: SchemaType.STRING,
+          description: 'Currency code for the payment, e.g., usd, eur',
+        },
+        userId: {
+          type: SchemaType.STRING,
+          description: 'User ID for whom the payment link is generated',
+        },
+      },
+      required: ['serviceType', 'description', 'amount', 'currency', 'userId'],
+    },
+  },
   // You can add a hotel search function here later
 ];
