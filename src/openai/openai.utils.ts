@@ -18,8 +18,9 @@ export function formatUserContext(
 
 export function extractFunctionCall(response: any) {
   logger.log('Extracting function call from AI response.');
+  logger.log(`Full AI Response: ${JSON.stringify(response, null, 2)}`);
 
-  if (response.functionCalls?.length) {
+  if (response.functionCalls && response.functionCall?.length) {
     logger.log(`Function call detected: ${response.functionCalls[0].name}`);
     return response.functionCalls[0];
   }

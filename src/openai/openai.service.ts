@@ -4,6 +4,7 @@ import { AmadeusService } from 'src/amadeus/amadeus.service';
 import { processFunctionCall } from './openai.function-calls';
 import { initiateChat } from './openai.chat';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { PaymentService } from 'src/payment/payment.service';
 
 @Injectable()
 export class OpenaiService {
@@ -13,6 +14,7 @@ export class OpenaiService {
   constructor(
     private readonly context: UserContextService,
     private readonly amadeus: AmadeusService,
+    private readonly stripeService: PaymentService,
   ) {}
 
   async generateAIResponse(userID: string, userInput: string) {
@@ -36,6 +38,7 @@ export class OpenaiService {
         chat,
         response,
         this.amadeus,
+        this.stripeService,
         this.logger,
       );
 
