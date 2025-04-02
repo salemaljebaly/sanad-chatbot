@@ -7,16 +7,11 @@ export class PaymentService {
   private stripe: Stripe;
 
   constructor() {
-    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: '2025-02-24.acacia',
-    });
+    this.stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   }
 
   async sessionStatus(sessionId: string): Promise<any> {
-    const stripe = new Stripe(process.env.STRIPE_SECRET, {
-      apiVersion: '2025-02-24.acacia',
-    });
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await this.stripe.checkout.sessions.retrieve(sessionId);
     console.log(session);
 
     return {
