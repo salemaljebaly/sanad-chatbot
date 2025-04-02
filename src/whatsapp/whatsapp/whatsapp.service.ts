@@ -1,11 +1,11 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { catchError, lastValueFrom, map } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
-import { OpenaiService } from 'src/openai/openai.service';
+import { LLMService } from 'src/llm/llm.service';
 
 @Injectable()
 export class WhatsappService {
-  constructor(private readonly openaiService: OpenaiService) {}
+  constructor(private readonly llmService: LLMService) {}
 
   private readonly httpService = new HttpService();
   private readonly logger = new Logger(WhatsappService.name);
@@ -18,7 +18,7 @@ export class WhatsappService {
     messageID: string,
   ) {
     try {
-      const aiResponse = await this.openaiService.generateAIResponse(
+      const aiResponse = await this.llmService.generateAIResponse(
         messageSender,
         userInput,
       );

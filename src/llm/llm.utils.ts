@@ -1,7 +1,7 @@
 import { FunctionCall } from '@google/generative-ai';
 import { Logger } from '@nestjs/common';
 
-const logger = new Logger('OpenAIUtils');
+const logger = new Logger('LLMUtils');
 
 export function formatUserContext(
   userContext: { role: string; content: string }[],

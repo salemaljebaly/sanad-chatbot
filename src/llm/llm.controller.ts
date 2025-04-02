@@ -1,12 +1,12 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { OpenaiService } from './openai.service';
+import { LLMService } from './llm.service';
 // import { ApiTags, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { GenerateResponseDto } from './dto/generate-response.dto';
 
-// @ApiTags('OpenAI')
-@Controller('openai')
-export class OpenaiController {
-  constructor(private readonly openaiService: OpenaiService) {}
+// @ApiTags('LLM')
+@Controller('LLM')
+export class LLMController {
+  constructor(private readonly llmService: LLMService) {}
 
   @Post('generate-response')
   // @ApiBody({
@@ -17,7 +17,7 @@ export class OpenaiController {
   // @ApiResponse({ status: 400, description: 'Invalid input.' })
   // @ApiResponse({ status: 500, description: 'Internal server error.' })
   async generateResponse(@Body() generateResponseDto: GenerateResponseDto) {
-    return await this.openaiService.generateAIResponse(
+    return await this.llmService.generateAIResponse(
       generateResponseDto.userId,
       generateResponseDto.userInput,
     );
