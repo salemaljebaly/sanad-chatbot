@@ -1,6 +1,6 @@
 import { AmadeusService } from 'src/amadeus/amadeus.service';
 import { Logger } from '@nestjs/common';
-import { extractFunctionCall } from './openai.utils';
+import { extractFunctionCall } from './llm.utils';
 import { FunctionCall } from '@google/generative-ai';
 import { PaymentService } from 'src/payment/payment.service';
 

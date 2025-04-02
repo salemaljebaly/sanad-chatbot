@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { WhatsappModule } from './whatsapp/whatsapp.module';
 import { ConfigModule } from '@nestjs/config';
-import { OpenaiModule } from './openai/openai.module';
+import { LLMModule } from './llm/llm.module';
 import { UserContextModule } from './user-context/user-context.module';
 import { AmadeusModule } from './amadeus/amadeus.module';
 import { PaymentModule } from './payment/payment.module';
@@ -15,7 +15,7 @@ import { EsimModule } from './esim/esim.module';
     ConfigModule.forRoot(),
     PaymentModule.forRootAsync(),
     WhatsappModule,
-    OpenaiModule,
+    LLMModule,
     UserContextModule,
     AmadeusModule,
     StripeWebhookModule,

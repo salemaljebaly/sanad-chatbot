@@ -86,7 +86,7 @@ To expose your local server to the internet (required for WhatsApp webhook verif
 The application follows a modular architecture using NestJS:
 
 - **WhatsApp Module**: Handles incoming messages and webhook verification
-- **OpenAI Module**: Integrates with Google's Gemini AI API to generate responses
+- **LLMModule**: Integrates with Google's Gemini AI API to generate responses
 - **User Context Module**: Manages conversation history using Redis
 - **Flight Booking Module**: Provides flight booking functionalities via API integration
 

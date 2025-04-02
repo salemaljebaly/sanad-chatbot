@@ -1,15 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { UserContextService } from 'src/user-context/user-context.service';
 import { AmadeusService } from 'src/amadeus/amadeus.service';
-import { processFunctionCall } from './openai.function-calls';
-import { initiateChat } from './openai.chat';
+import { processFunctionCall } from './llm.function-calls';
+import { initiateChat } from './llm.chat';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { PaymentService } from 'src/payment/payment.service';
 
 @Injectable()
-export class OpenaiService {
+export class LLMService {
   private readonly genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-  private readonly logger = new Logger(OpenaiService.name);
+  private readonly logger = new Logger(LLMService.name);
 
   constructor(
     private readonly context: UserContextService,
